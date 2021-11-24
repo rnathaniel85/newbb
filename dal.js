@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb+srv://rnathaniel85:C8cF9N5u2O3ZgMUV@serverlessinstance0.oyxlg.mongodb.net/';
-const db            = null;
+const url         = process.env.DATABASE_URL;
+const client      = await MongoClient.connect(uri);
+const db          = await client.db('mydb');
  
 // connect to mongo
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
